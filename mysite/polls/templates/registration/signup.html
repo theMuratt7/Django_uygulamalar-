@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" style="max-width: 400px; margin: 40px auto; text-align: center;">
+    <h2 style="color: var(--red);">Yeni Hesap Oluştur</h2>
+    <form method="post" style="display: flex; flex-direction: column; gap: 15px;">
+        {% csrf_token %}
+        <style>
+            /* Formu siyah temaya uydurmak için küçük bir CSS dokunuşu */
+            p label { display: block; margin-bottom: 5px; color: #888; text-align: left; }
+            p input { width: 100%; padding: 10px; background: #0d0d0d; border: 1px solid #333; color: white; border-radius: 5px; box-sizing: border-box; }
+        </style>
+        {{ form.as_p }}
+        <button type="submit" class="btn" style="width: 100%; padding: 15px;">KAYIT OL</button>
+    </form>
+    <p style="margin-top: 20px; font-size: 0.9em;">
+        Zaten hesabın var mı? <a href="{% url 'login' %}" style="color: var(--red); text-decoration: none;">Giriş Yap</a>
+    </p>
+</div>
+{% endblock %}

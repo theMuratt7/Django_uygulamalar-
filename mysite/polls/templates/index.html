@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Mevcut Anketler</h1>
+    {% for q in questions %}
+        <div class="card">
+            <small style="color:var(--red);">Oluşturan: @{{ q.author.username }}</small>
+            <h2>{{ q.title }}</h2>
+            <p>{{ q.description }}</p>
+            <a href="{% url 'detail' q.id %}" class="btn">Ankete Katıl</a>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <h2>Yeni Anket</h2>
+        <form method="post">{% csrf_token %}
+            <input type="text" name="title" placeholder="Başlık" style="width:100%; margin-bottom:10px; padding:10px;">
+            <textarea name="description" placeholder="Açıklama" style="width:100%; margin-bottom:10px; padding:10px;"></textarea>
+            <div id="choices">
+                <input type="text" name="choices" placeholder="Seçenek 1" style="width:100%; margin-bottom:10px; padding:10px;">
+                <input type="text" name="choices" placeholder="Seçenek 2" style="width:100%; margin-bottom:10px; padding:10px;">
+            </div>
+            <button type="button" onclick="addChoice()" style="background:none; border:1px dashed var(--red); color:var(--red); width:100%; padding:10px; margin-bottom:10px;">+ Seçenek Ekle</button>
+            <button type="submit" class="btn" style="width:100%;">YAYINLA</button>
+        </form>
+    </div>
+    <script>
+        function addChoice() {
+            let input = document.createElement('input');
+            input.name = 'choices'; input.style = "width:100%; margin-bottom:10px; padding:10px;";
+            input.placeholder = "Yeni Seçenek";
+            document.getElementById('choices').appendChild(input);
+        }
+    </script>
+{% endblock %}

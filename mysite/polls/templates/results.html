@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <h1>Sonuçlar: {{ question.title }}</h1>
+        {% for choice in question.choice_set.all %}
+            <p>{{ choice.choice_text }} — <strong>{{ choice.votes }} Oy</strong></p>
+        {% endfor %}
+        <a href="{% url 'home' %}" style="color:var(--red);">← Anasayfaya Dön</a>
+    </div>
+{% endblock %}
